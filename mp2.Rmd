@@ -30,10 +30,17 @@ library(tidyverse)
 -one record per candidate  
 -contains including name, party, whether the candidate is an incumbent, challenger, or involved in an open seat, address, state and district in which the candidate is running and the year of the election for which the candidate is registered, and ID
 
+<<<<<<< HEAD
 `Committees` file: 
 -One record for each committee registered
 
 `Contributions` file: 
 -file of each contribution made to a candidate
+
+
+```{r}
+glimpse(house_elections)
+
+```
 
 
