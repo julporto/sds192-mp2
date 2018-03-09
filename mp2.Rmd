@@ -21,6 +21,11 @@ library(tidyverse)
 library(dplyr)
 ```
 
+
+## A question:
+
+-how much avg money is contributed by state?
+
 ## Info about the data
 
 `Candidates` file:   https://classic.fec.gov/finance/disclosure/ftpdet.shtml#archive_lin
@@ -29,7 +34,5 @@ library(dplyr)
 
 ```{r}
 glimpse(house_elections)
-
-
 ```
 
