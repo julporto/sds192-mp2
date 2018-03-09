@@ -16,9 +16,24 @@ load("committees.rda")
 load("contributions.rda")
 ```
 
+```{r}
+library(dbplyr)
+library(tidyverse)
+```
+
+
+##a question
+
 ## Info about the data
 
 `Candidates` file:   https://classic.fec.gov/finance/disclosure/ftpdet.shtml#archive_lin
 -one record per candidate  
 -contains including name, party, whether the candidate is an incumbent, challenger, or involved in an open seat, address, state and district in which the candidate is running and the year of the election for which the candidate is registered, and ID
+
+`Committees` file: 
+-One record for each committee registered
+
+`Contributions` file: 
+-file of each contribution made to a candidate
+
 
