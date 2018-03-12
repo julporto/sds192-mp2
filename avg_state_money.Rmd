@@ -1,0 +1,18 @@
+---
+title: "avg_state_money"
+author:"Julia Portocarrero & Dasom An"
+output: html_document
+---
+
+This document will try to answer the possible question: how much avg $ is contributed by state? (What state contributes the most $ per population?)
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+load("contributions.rda")
+
+```
+
