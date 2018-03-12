@@ -12,7 +12,32 @@ library(dplyr)
 ```
 
 ```{r}
+#contributions_tbl <- load("contributions.rda")
+#save(tdf, file = "")
+#contributions <- read_csv("contributions.rda")
 load("contributions.rda")
+```
 
+
+```{r}
+state_contrib <- contributions %>%
+  select(transaction_amt, state) %>%
+  group_by(state) %>%
+  #mutate(avg_donation = mean(transaction_amt)) %>%
+  summarize(avg_donation = mean(transaction_amt))
+
+```
+
+Load census data (made from https://www.census.gov/data/datasets/2017/demo/popest/state-total.html data): 
+
+```{r}
+census_data <- read.csv("census_Data.csv") 
+#census_data$place <- sub("\\.", "", census_data$place) #clean data names
+#rename(census_data, "place" = "place", "X2010" = "2010", "X2011" = "2011", "X2012" = "2012", "X2012" = "2013", "X2014" = "2014", "X2015" = "2015", "X2016" = "2016", "X2017" = "2017")
+```
+
+Join together the data
+```{r}
+#left_join(state_contrib, census_data... )
 ```
 
