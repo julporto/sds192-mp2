@@ -8,13 +8,14 @@ output: html_document
 
 ## Loading the data
 
-
-```{r, include=FALSE}
+Only do this step once:
+```{r}
 load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
 ```
+
 
 ```{r}
 library(tidyverse)
@@ -25,6 +26,8 @@ library(dplyr)
 ## A question:
 
 -how much avg money is contributed by state?
+-what is the relationship between money for and against a candidate, and if they won the election?
+
 
 ## Info about the data
 
