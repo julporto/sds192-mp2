@@ -1,0 +1,57 @@
+---
+title: "MiniProj2"
+authors: "Dasom An & Julia Portocarrero"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+**This document will try to answer the possible question: In what states do people contribute the most and least to campaigns?**
+
+
+**Load data:**
+
+The data on contributions to candidates comes from the Federal Election Committee. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
+
+```{r, messages = FALSE, warning = FALSE}
+library(tidyverse)
+library(dplyr)
+
+load("contributions.rda")
+
+census_data <- read.csv("census_Data.csv") %>%
+  select(state, X2017)
+```
+
+Modify the data table:
+```{r}
+ #create data table with average contribution by state
+state_contrib <- contributions %>%
+  select(transaction_amt, state) %>%
+  group_by(state) %>%
+  summarize(avg_donation = mean(transaction_amt))
+```
+
+Join the data:
+
+```{r, warning = FALSE}
+#create data table that divides avg state donation by state population
+
+state_contrib_census <- left_join(state_contrib, census_data, by = "state", na.rm = TRUE)
+
+full_data <- state_contrib_census %>%
+  mutate(donation_per_person = as.numeric(avg_donation)/as.numeric(X2017)) %>% 
+  arrange(donation_per_person) %>%
+  na.omit()
+```
+
+Plot:
+
+```{r}
+#ggplot(test_data, aes(x = X2017, y = donation_per_person)) +
+  #geom_point() #+
+  #theme_light() +
+  #scale_x_discrete(breaks = c("0", "1", "1000000", "4000000"))
+```
+
+The graph shows the 10 states with the most and least contributions to candidates. This data is for 2017. 
