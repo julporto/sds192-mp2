@@ -36,19 +36,46 @@ Join together the data
 state_contrib_census <- left_join(state_contrib, census_data, by = "state", na.rm = TRUE)
 
 #test_data <- state_contrib_census %>%
-  head(10) 
+  head(10)  
 
 full_data <- state_contrib_census %>%
   mutate(donation_per_person = as.numeric(avg_donation)/as.numeric(X2017)) %>%
-  arrange(donation_per_person) %>%
   na.omit()
 ```
 
-Plot
+Most and Least donations:
 ```{r}
-ggplot(test_data, aes(x = X2017, y = donation_per_person)) +
-  geom_point() #+
-  #theme_light() +
-  #scale_x_discrete(breaks = c("0", "1", "1000000", "4000000"))
+most_data <- full_data %>%
+  arrange(desc(donation_per_person)) %>%
+  head(5) 
+  
+least_data <- full_data %>%
+  arrange(donation_per_person) %>%
+  head(5)
+
+total_data <- rbind(most_data, least_data) #it's hard to see the numbers when you look at both together- bettero to have seperate graphs
+
+```
+
+Plot of both:
+
+
+Plot Most Contributions:
+```{r}
+ggplot(most_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person") +
+  xlab("state")
+  
+#if the color difference is distracting, move fill out of aes() and choose a color
+```
+
+Plot Least Contributions:
+
+```{r}
+ggplot(least_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person") +
+  xlab("state")
 ```
 
