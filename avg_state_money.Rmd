@@ -43,9 +43,13 @@ state_contrib_census <- left_join(state_contrib, census_data, by = "state") #%>%
   #mutate(donation_per_person = str(avg_donation)/str(X2017))
 test_data <- state_contrib_census %>%
   head(10)
-state_contrib_census %>%
-  arrange(desc(X2017))
+  
 ```
+
+```{r}
+state_contrib_census
+```
+
 
 ```{r}
 ggplot(state_contrib_census, aes(y = avg_donation, x = X2017)) +
