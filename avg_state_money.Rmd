@@ -38,11 +38,13 @@ state_contrib_census <- left_join(state_contrib, census_data, by = "state", na.r
 test_data <- state_contrib_census %>%
   head(10)
 state_contrib_census %>%
-  mutate(donation_per_person = avg_donation/X2017)
+  mutate(donation_per_person = as.numeric(avg_donation)/as.numeric(X2017)) %>%
+  arrange(donation_per_person)
 ```
 
+Plot
 ```{r}
-ggplot(state_contrib_census, aes(y = avg_donation, x = X2017)) +
+ggplot(test_data, aes(y = donation_per_person, x = X2017)) +
   geom_point() +
   #theme_light() +
   scale_x_discrete(breaks = c("0", "1", "1000000", "4000000"))
