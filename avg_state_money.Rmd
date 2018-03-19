@@ -58,7 +58,12 @@ total_data <- rbind(most_data, least_data) #it's hard to see the numbers when yo
 ```
 
 Plot of both:
-
+```{r}
+ggplot(total_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person") +
+  xlab("state")
+```
 
 Plot Most Contributions:
 ```{r}
