@@ -36,17 +36,18 @@ Join together the data
 state_contrib_census <- left_join(state_contrib, census_data, by = "state", na.rm = TRUE)
 
 test_data <- state_contrib_census %>%
-  head(10)
-state_contrib_census %>%
+  head(10) 
+
+test_data <- test_data %>%
   mutate(donation_per_person = as.numeric(avg_donation)/as.numeric(X2017)) %>%
   arrange(donation_per_person)
 ```
 
 Plot
 ```{r}
-ggplot(test_data, aes(y = donation_per_person, x = X2017)) +
-  geom_point() +
+ggplot(test_data, aes(y = donation_per_person)) +
+  geom_histogram() #+
   #theme_light() +
-  scale_x_discrete(breaks = c("0", "1", "1000000", "4000000"))
+  #scale_x_discrete(breaks = c("0", "1", "1000000", "4000000"))
 ```
 
