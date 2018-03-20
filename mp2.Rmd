@@ -76,7 +76,7 @@ ggplot(total_data) +
   geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
   ylab("Avg donation per person ($)") +
   xlab("State") +
-  labs(title="The Most and Least 10 Contributing States_2017")
+  labs(title="The Most and Least 10 Contributing States in 2017")
   
 ```
 
@@ -88,7 +88,7 @@ ggplot(most_data) +
   geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
   ylab("Avg donation per person ($)") +
   xlab("State") +
-  labs(title = "The Most 5 Contributing States_2017")
+  labs(title = "The Most 5 Contributing States in 2017")
   
 #if the color difference is distracting, move fill out of aes() and choose a color
 ```
