@@ -1,41 +1,107 @@
 ---
-title: "Mini-Project 2"
-author: "Dasom An & Julia Portocarrero"
-date: "October 31, 2017"
-output: html_document
+title: "MiniProj2"
+authors: "Dasom An & Julia Portocarrero"
+output: 
+  html_document:
+    code_folding: hide
 ---
 
-
-## Loading the data
-
-Only do this step once:
-```{r}
-load("house_elections.rda")
-load("candidates.rda")
-load("committees.rda")
-load("contributions.rda")
-```
+**This document will try to answer the possible question: In what states do people contribute the most and least to campaigns, on average?**
 
 
-```{r}
+#### Load data: 
+
+The data on contributions to candidates comes from the Federal Election Committee. The unit is dollar. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
+
+```{r, messages = FALSE, warning = FALSE}
 library(tidyverse)
 library(dplyr)
+
+load("contributions.rda")
+
+census_data <- read.csv("census_Data.csv") %>%
+  select(state, X2017)
 ```
 
+#### Modify the data table:
+```{r}
+ #create data table with average contribution by state
+state_contrib <- contributions %>%
+  select(transaction_amt, state) %>%
+  group_by(state) %>%
+  summarize(avg_donation = mean(transaction_amt))
+```
 
-## A question:
+Join the data:
 
--how much avg money is contributed by state?
--what is the relationship between money for and against a candidate, and if they won the election?
+```{r, warning = FALSE}
+#create data table that divides avg state donation by state population
 
+state_contrib_census <- left_join(state_contrib, census_data, by = "state", na.rm = TRUE)
 
-## Info about the data
+full_data <- state_contrib_census %>%
+  mutate(donation_per_person = as.numeric(avg_donation)/as.numeric(X2017)) %>% 
+  na.omit()
+```
 
-`Candidates` file:   https://classic.fec.gov/finance/disclosure/ftpdet.shtml#archive_lin
--one record per candidate  
--contains including name, party, whether the candidate is an incumbent, challenger, or involved in an open seat, address, state and district in which the candidate is running and the year of the election for which the candidate is registered, and ID
+Most and Least donations:
+```{r}
+most_data <- full_data %>%
+  arrange(desc(donation_per_person)) %>%
+  head(5)
+  
+least_data<- full_data %>%
+  arrange(donation_per_person) %>%
+  head(5)
+
+total_data <- rbind(most_data, least_data) #it's hard to see the numbers when you look at both together- better to have seperate graphs
+
+```
+
+#### Plot
+
+The graph shows the 10 states with the most and least contributions to candidates. This data is for 2017. 
+
 
 ```{r}
-glimpse(house_elections)
+all_data <- function(name_arg) { 
+  
+}
 ```
 
+
+
+```{r}
+ggplot(total_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person ($)") +
+  xlab("State") +
+  labs(title="The Most and Least 10 Contributing States_2017")
+  
+```
+
+Since it's hard to estimate the numbers for the smaller values, the graph is broken down into the highest and lowest contributions.
+
+Plot Most Contributions:
+```{r}
+ggplot(most_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person ($)") +
+  xlab("State") +
+  labs(title = "The Most 5 Contributing States_2017")
+  
+#if the color difference is distracting, move fill out of aes() and choose a color
+```
+
+Plot Least Contributions:
+```{r}
+ggplot(least_data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person ($)") +
+  xlab("State") +
+  labs(title = "The Least 5 Contributing States_2017")
+```
+ 
+We can see from the graphs above that North Carolina (NC) has by far the most contributions per person, and Minnesota (MN) the least. 
+
+The difference between the most contributing state NC and the following state Georgia (GA) is quite big as almost 500 dollars, but the gaps between the least contributing state MN and the next less contributing states South Dakota (SD), Wisconsin (WI) is very small as less than 5 dollars. 
