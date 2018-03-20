@@ -104,4 +104,4 @@ ggplot(least_data) +
  
 We can see from the graphs above that North Carolina (NC) has by far the most contributions per person, and Minnesota (MN) the least. 
 
-The difference between the most contributing state NC and the following state Georgia (GA) is quite big as almost 500 dollars, but the gaps between the least contributing state MN and the next less contributing states South Dakota (SD), Wisconsin (WI) is very small as less than 5 dollars. 
+The difference between the most contributing state NC and the following state Georgia (GA) is quite big- almost 500 dollars, but the gap between the least contributing state Minnesota (MN) and the next-to-last contributing state South Dakota (SD), is very small- less than 5 dollars. 
