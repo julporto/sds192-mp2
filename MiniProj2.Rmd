@@ -13,6 +13,8 @@ output:
 
 The data on contributions to candidates comes from the Federal Election Committee. The unit is dollar. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
 
+We calculated the average contributions from each state, and divided it by the state population to account for size differences. However, it is important to keep in mind that the contributions are from Committees, not individuals. 
+
 ```{r, messages = FALSE, warning = FALSE}
 library(tidyverse)
 library(dplyr)
@@ -86,7 +88,7 @@ Plot Most Contributions:
 ```{r}
 ggplot(most_data) +
   geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
-  ylab("Avg donation per person ($)") +
+  ylab("Avg donation of committee by population ($)") +
   xlab("State") +
   labs(title = "The Most 5 Contributing States_2017")
   
@@ -97,7 +99,7 @@ Plot Least Contributions:
 ```{r}
 ggplot(least_data) +
   geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
-  ylab("Avg donation per person ($)") +
+  ylab("Avg donation of committee by population ($)") +
   xlab("State") +
   labs(title = "The Least 5 Contributing States_2017")
 ```
@@ -105,3 +107,7 @@ ggplot(least_data) +
 We can see from the graphs above that Montana (MT) has by far the most contributions per person, and Minnesota (MN) the least. 
 
 The difference between the most contributing state MT and the following state Rhode Island (RI) is quite big- almost 500 dollars, but the gaps between the least contributing state MI and the next less contributing state Wisconsin (WI) is very small- less than 5 dollars. 
+
+We then looked into contribution limitation and taxes for the most and least-contributing states, to see if that may contribute to the results we saw. In Montana, there isn't a limitation on the contributions from a committee, except to Super PACs and Corporations, but the same is true for Minnesota. 
+
+It is also possible that the large difference 
