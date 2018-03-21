@@ -95,12 +95,12 @@ graph_funct(least_data) +
   labs(title = "The Least 5 Contributing States in 2017")
 ```
  
-We can see from the graphs above that Montana(MT) has by far the most contributions per person (about 2000), and Minnesota(MN) the least (about 25). 
+We can see from the graphs above that Montana(MT) has by far the most contributions per person and Minnesota(MN) has the least. Montana committees spent an average of 2,031 dollars by population, and Minnesota committees spent an average of 26 dollars by population.
 
-The difference between the most contributing state MT and the following state Rhode Island(RI) is quite big- almost 500 dollars, but the gaps between the least contributing state MI and the next less contributing state Wisconsin(WI) is very small- less than 5 dollars. 
+The difference between the most contributing state MT and the following state Rhode Island(RI) is quite big- over 1000 dollars, but the gaps between the least contributing state MI and the next less contributing state Wisconsin(WI) is very small- less than 5 dollars. 
 
 We then looked into contribution limitations for the most and least-contributing states, to see if that may contribute to the results we saw. In Montana, there isn't a limitation on the contributions from a committee, except to Super PACs and Corporations, but the same is true for Minnesota. It is also possible that the large difference is due to various tax laws for committees in each state. If MT has low taxes for Committees, then there would be more committees, and each may be motivated to contribute more money. 
 
-**Final Take-away:** Committees in Montana spend the most
+**Final Take-away:** Committees in Montana on average spend the most money on campaigns. 
 
 Link to GitHub: https://github.com/julporto/sds192-mp2.git
