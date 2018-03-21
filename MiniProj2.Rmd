@@ -66,30 +66,26 @@ The graph shows the 10 states with the most and least contributions to candidate
 
 
 ```{r}
-all_data <- function(name_arg) { 
-  
+#This function graphs the data
+graph_funct <- function(data) { 
+  plot <- ggplot(data) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  ylab("Avg donation per person ($)") +
+  xlab("State")
+  return(plot)
 }
 ```
 
-
-
 ```{r}
-ggplot(total_data) +
-  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
-  ylab("Avg donation per person ($)") +
-  xlab("State") +
+graph_funct(total_data) +
   labs(title="The Most and Least 10 Contributing States_2017")
-  
 ```
 
 Since it's hard to estimate the numbers for the smaller values, the graph is broken down into the highest and lowest contributions.
 
 Plot Most Contributions:
 ```{r}
-ggplot(most_data) +
-  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
-  ylab("Avg donation of committee by population ($)") +
-  xlab("State") +
+graph_funct(most_data) +
   labs(title = "The Most 5 Contributing States_2017")
   
 #if the color difference is distracting, move fill out of aes() and choose a color
@@ -97,10 +93,7 @@ ggplot(most_data) +
 
 Plot Least Contributions:
 ```{r}
-ggplot(least_data) +
-  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
-  ylab("Avg donation of committee by population ($)") +
-  xlab("State") +
+graph_funct(least_data) +
   labs(title = "The Least 5 Contributing States_2017")
 ```
  
@@ -110,4 +103,4 @@ The difference between the most contributing state MT and the following state Rh
 
 We then looked into contribution limitation and taxes for the most and least-contributing states, to see if that may contribute to the results we saw. In Montana, there isn't a limitation on the contributions from a committee, except to Super PACs and Corporations, but the same is true for Minnesota. 
 
-It is also possible that the large difference 
+It is also possible that the large difference is due to various tax laws for committees in each state. If MT has low taxes for Committees, then there would be more committees, and each may be motivated to contribute more money. 
