@@ -70,7 +70,7 @@ The graph shows the 10 states with the most and least contributions to candidate
 #This function graphs the data
 graph_funct <- function(data) { 
   plot <- ggplot(data) +
-  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person, fill = donation_per_person), show.legend=F) +
+  geom_col(aes(x = reorder(state, -donation_per_person), y = donation_per_person), show.legend=F) +
   ylab("Avg donation per person ($)") +
   xlab("State")
   return(plot)
