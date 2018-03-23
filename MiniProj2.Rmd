@@ -36,7 +36,7 @@ state_contrib <- contributions %>%
   summarize(avg_donation = mean(transaction_amt))
 ```
 
-Join the data:
+Join the data: We combined our data table with the mean transactions with a data table containing the population for each state, and calculated the average donation of committees by population.
 
 ```{r, warning = FALSE}
 #create data table that divides avg state donation by state population
