@@ -26,6 +26,8 @@ census_data <- read.csv("census_Data.csv") %>%
 ```
 
 #### Modify the data table:
+
+We simplified the large data table to include the transaction amount and the state the transaction came from. We then found the mean transaction amount for each state.
 ```{r}
  #create data table with average contribution by state
 state_contrib <- contributions %>%
