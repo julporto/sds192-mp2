@@ -60,13 +60,11 @@ least_data<- full_data %>%
   head(5)
 
 total_data <- rbind(most_data, least_data) #it's hard to see the numbers when you look at both together- better to have seperate graphs
-
 ```
 
 #### Plot
 
 The graph shows the 10 states with the most and least contributions to candidates. This data is for 2017. 
-
 
 ```{r}
 #This function graphs the data
