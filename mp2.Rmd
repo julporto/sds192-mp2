@@ -11,7 +11,7 @@ output:
 
 #### Load data: 
 
-The data on contributions to candidates comes from the Federal Election Committee. The unit is dollar. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
+The data on contributions to candidates comes from the Federal Election Committee. The units are in dollars. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
 
 ```{r, messages = FALSE, warning = FALSE}
 library(tidyverse)
