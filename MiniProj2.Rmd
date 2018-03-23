@@ -105,4 +105,4 @@ We then looked into contribution limitations for the most and least-contributing
 
 **Final Take-away:** Committees in Montana on average spend the most money on campaigns, while committees in Minnesota on average spend the least amounf of money on campaigns. 
 
-Link to GitHub: https://github.com/julporto/sds192-mp2.git
+Link to GitHub: https://github.com/julporto/sds192-mp2.git (final files are in Lab12 branch)
