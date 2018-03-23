@@ -16,7 +16,7 @@ The data on contributions to candidates comes from the Federal Election Committe
 
 We calculated the average contributions from each state, and divided it by the state population to account for size differences. However, it is important to keep in mind that the contributions are from Committees, not individuals- using the population was our way of trying to control for different number of committees per state.  
 
-```{r, messages = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(dplyr)
 
