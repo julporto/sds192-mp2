@@ -6,7 +6,7 @@ output:
     code_folding: hide
 ---
 
-**This document will try to answer the question: In what states do committees contribute the most and least to campaigns, on average?**
+This document will try to answer the question: **In what states do committees contribute the most and least to campaigns, on average?**
 
 
 #### Load data: 
