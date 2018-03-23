@@ -1,5 +1,5 @@
 ---
-title: "MiniProj2"
+title: "Mini Project 2"
 authors: "Dasom An & Julia Portocarrero"
 output: 
   html_document:
