@@ -1,6 +1,6 @@
 ---
 title: "Mini Project 2"
-authors: "Dasom An & Julia Portocarrero"
+author: "Dasom An & Julia Portocarrero"
 date: "March 23, 2018"
 output: 
   html_document:
