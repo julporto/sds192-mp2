@@ -11,9 +11,9 @@ This document will try to answer the question: **In what states do committees co
 
 #### Load data: 
 
-The data on contributions to candidates comes from the Federal Election Committee. The unit is dollar. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
+The data on contributions to candidates comes from the Federal Election Committee. The unit is dollars. The data on the population of each state comes from census data of the same year (https://www.census.gov/data/datasets/2017/demo/popest/state-total.html).
 
-We calculated the average contributions from each state, and divided it by the state population to account for size differences. However, it is important to keep in mind that the contributions are from Committees, not individuals. 
+We calculated the average contributions from each state, and divided it by the state population to account for size differences. However, it is important to keep in mind that the contributions are from Committees, not individuals- using the population was our way of trying to control for different number of committees per state.  
 
 ```{r, messages = FALSE, warning = FALSE}
 library(tidyverse)
