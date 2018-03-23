@@ -48,7 +48,8 @@ full_data <- state_contrib_census %>%
   na.omit()
 ```
 
-Most and Least donations:
+Most and Least donations: In order to look at the most interesting values, we made data sets containing the data for the 10 states who contributed the most and the least to campaigns. 
+
 ```{r}
 most_data <- full_data %>%
   arrange(desc(donation_per_person)) %>%
